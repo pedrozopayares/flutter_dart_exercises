@@ -52,6 +52,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String codeContent = 'This is a simple QR code';
+
+  _qRCode(String codeContent) {
+    return QrImage(
+      data: this.codeContent,
+      version: QrVersions.auto,
+      size: 320,
+      gapless: false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,12 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            QrImage(
-              data: this.codeContent,
-              version: QrVersions.auto,
-              size: 320,
-              gapless: false,
-            ),
+            _qRCode('initial code'),
             SizedBox(height: 40),
             TextField(
               decoration: InputDecoration(
