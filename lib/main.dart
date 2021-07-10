@@ -51,6 +51,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String codeContent = 'This is a simple QR code';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             QrImage(
-              data: 'This is a simple QR code',
+              data: this.codeContent,
               version: QrVersions.auto,
               size: 320,
               gapless: false,
@@ -71,8 +72,17 @@ class _MyHomePageState extends State<MyHomePage> {
             TextField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Ingrese un término de búsqueda'),
-            )
+                  hintText: 'Inicie una búsqueda'),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: const TextStyle(fontSize: 20),
+              ),
+              onPressed: () {
+                this.codeContent = "Otro codigo";
+              },
+              child: const Text('Disabled'),
+            ),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
